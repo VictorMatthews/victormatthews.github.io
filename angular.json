@@ -18,10 +18,10 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.png"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -71,11 +71,11 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.png"
             ]
           }
         },
@@ -93,7 +93,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "repo": "https://github.com/VictorMatthews/victormatthews.github.io"
+          }
         }
       }
     },

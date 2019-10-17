@@ -1,0 +1,16 @@
+@import '../../../variables';
+
+#intro {
+    background-image: url(/assets/images/home/intro.jpg);
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+    color: whitesmoke;
+    mat-icon {
+        vertical-align: baseline;
+    }
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
