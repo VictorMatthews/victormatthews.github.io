@@ -93,9 +93,7 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "repo": "https://github.com/VictorMatthews/victormatthews.github.io"
-          }
+          "options": {}
         }
       }
     },
