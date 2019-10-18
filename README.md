@@ -4,7 +4,7 @@
 
 This is the repo for my personal website built with Angular.
 
-You can access the website via https://victormatthews.github.io
+You can access the website via https://victormmatthews.me
 
 ## Development server
 
