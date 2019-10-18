@@ -1,11 +1,14 @@
-<section id="contact" class="section">
+<section class="section contact">
     <div class="container">
         <header>
-            <h2>Interested in working with me?</h2>
+            <h2>{{ui.CONSTANTS.WORK_WITH_ME.getString()}}</h2>
         </header>
-            <p>if you need help with a project or have a job opportunity? Send me an email.</p>
+
+        <p>{{ui.PARAGRAPHS.CONTACT_P1.getString()}}</p>
+
         <h4>
-            <mat-icon fontSet="fa" fontIcon="fa-envelope"></mat-icon> <b href="mailto:victormmatthews@gmail.com"> victormmatthews@gmail.com</b>
+            <mat-icon fontSet="fa" fontIcon="fa-envelope"></mat-icon>
+            <a [href]="ui.getMailToLink()">{{ui.CONSTANTS.MY_EMAIL.getString()}}</a>
         </h4>
         <br>
     </div>

@@ -1,138 +1,50 @@
 <div class="content">
     <section class="top-header">
         <ul>
-            <li><strong>LOCATION:</strong> Denver, CO</li>
-            <li><strong>CELL:</strong> 616 970 0690</li>
-            <li><strong>EMAIL:</strong> <a href="mailto:victormmatthews@gmail.com"> victormmatthews@gmail.com</a></li>
+            <li><strong>{{ui.CONSTANTS.LOCATION.getString().toUpperCase()}}: </strong>{{ui.CONSTANTS.MY_LOCATION.getString()}}</li>
+            <li><strong>{{ui.CONSTANTS.CELL.getString().toUpperCase()}}: </strong>{{ui.CONSTANTS.MY_PHONE_NUMBER.getString()}}</li>
+            <li><strong>{{ui.CONSTANTS.EMAIL.getString().toUpperCase()}}: </strong> <a [href]="ui.getMailToLink()">{{ui.CONSTANTS.MY_EMAIL.getString()}}</a></li>
         </ul>
     </section>
 
     <header>
-        <h2>VICTOR MATTHEWS</h2>
-        <h3><span class="blue-dot">&bull;</span> Software Engineer <span class="blue-dot">&bull;</span></h3>
+        <h1>{{ui.CONSTANTS.MY_NAME.getString().toUpperCase()}}</h1>
+        <h3><span class="blue-dot">&bull;</span> {{ui.CONSTANTS.MY_JOB_TITLE.getString()}} <span class="blue-dot">&bull;</span></h3>
     </header>
 
     <section class="below-header">
         <ul>
-            <li>Know me better at:</li>
-            <li><mat-icon fontSet="fa" fontIcon="fa-user"></mat-icon> <a href="https://victormatthews.github.io"
-                    target="_blank">https://victormatthews.github.io</a></li>
-            <li><mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon> <a href="https://github.com/victormatthews"
-                    target="_blank">https://github.com/victormatthews</a></li>
+            <li>{{ui.CONSTANTS.KNOW_ME_BETTER_AT.getString()}}</li>
+            <li><mat-icon fontSet="fa" fontIcon="fa-user"></mat-icon> <a [href]="ui.CONSTANTS.MY_WEBSITE_URL.getString()"
+                    target="_blank">{{ui.CONSTANTS.MY_WEBSITE_URL.getString()}}</a></li>
+            <li><mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon> <a [href]="ui.CONSTANTS.MY_GITHUB_URL.getString()"
+                    target="_blank">{{ui.CONSTANTS.MY_GITHUB_URL.getString()}}</a></li>
         </ul>
     </section>
 
     <div class="experience">
         <div class="left">
-            <!-- Employment -->
             <div class="work-title">
-                <h2><span class="square"></span>Employment</h2>
+                <h2><span class="square"></span>{{ui.CONSTANTS.EMPLOYMENT.getString()}}</h2>
             </div>
+            <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
 
-            <div class="work-detail">
-                <p>Mar 2016 - Present</p>
-                <h3>Software Engineer</h3>
-                <h4>Gordon Food Service</h4>
-                <p>Working with the IT Warehouse team, developing and supporting the warehouse management system</p>
-            </div>
-
-            <div class="work-detail">
-              <p>May 2015 - Mar 2016</p>
-              <h3>Asset Administrator</h3>
-              <h4>Gordon Food Service</h4>
-              <p>Working with the North American Asset Management team. I automated the internal hardware & software PO request system, resulting in our team winning the J&P Cup award that year.</p>
-            </div>
-
-            <div class="work-detail">
-              <p>Sept 2013 - May 2015</p>
-              <h3>Sales Associate</h3>
-              <h4>Gordon Food Service</h4>
-              <p>Working at the GFS Store in Cascade, MI</p>
-            </div>
-
-            <!-- Education -->
             <div class="education-title">
-                <h2><span class="square"></span>Education</h2>
+                <h2><span class="square"></span>{{ui.CONSTANTS.EDUCATION.getString()}}</h2>
             </div>
-
-            <div class="edu-detail">
-                <div class="triangle">
-                </div>
-                <div class="edu-info">
-                    <h3>B.S. Digital Media Software Engineering<span style="float: right; font-size: 18px;">2013-2017</span></h3>
-                    <h4>Ferris State University - Grand Rapids, MI</h4>
-                </div>
-            </div>
-
+            <app-education-card *ngFor="let education of educations" [education]="education"></app-education-card>
         </div>
+
         <div class="right">
             <div class="skills">
-
                 <div class="objectives">
-                    <h2><mat-icon fontSet="far" fontIcon="fa-compass"></mat-icon> My Objective</h2>
-                    <p>Continually grow my knowledge in all areas of programming. I have a new found passion for the
-                      web space, but I really enjoy Java and working on backends. My next goal in life is to rid the
-                      world of web apps not designed for the color blind.</p>
+                    <h2><mat-icon fontSet="far" fontIcon="fa-compass"></mat-icon> {{ui.CONSTANTS.MY_OBJECTIVE.getString()}}</h2>
+                    <p>{{ui.PARAGRAPHS.RESUME_OBJECTIVE.getString()}}</p>
                 </div>
 
                 <article>
-
-                    <h2><mat-icon fontSet="far" fontIcon="fa-check-circle"></mat-icon> Professional Skills</h2>
-
-                    <section class="professional-skills">
-                        <p>Java</p>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                    </section>
-
-                    <section class="professional-skills">
-                      <p>SQL</p>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                    </section>
-
-                    <section class="professional-skills">
-                        <p>Angular</p>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="blue-dot">&#x25cf;</span>
-                        <span class="gray-dot">&#x25cf;</span>
-                    </section>
-
-                    <section class="professional-skills">
-                      <p>Javascript/TypeScript</p>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="gray-dot">&#x25cf;</span>
-                    </section>
-
-                    <section class="professional-skills">
-                      <p>HTML</p>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="gray-dot">&#x25cf;</span>
-                      <span class="gray-dot">&#x25cf;</span>
-                    </section>
-
-                    <section class="professional-skills">
-                      <p>CSS</p>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="blue-dot">&#x25cf;</span>
-                      <span class="gray-dot">&#x25cf;</span>
-                      <span class="gray-dot">&#x25cf;</span>
-                    </section>
-
+                    <h2><mat-icon fontSet="far" fontIcon="fa-check-circle"></mat-icon> {{ui.CONSTANTS.PROFESSIONAL_SKILLS.getString()}}</h2>
+                    <app-skill-card *ngFor="let skill of skills" [skill]="skill"></app-skill-card>
                 </article>
             </div>
         </div>

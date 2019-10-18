@@ -1,0 +1,13 @@
+<section class="section landing">
+    <div class="container">
+        <header>
+            <h2 class="alt">{{getLandingInfo()}}</h2>
+        </header>
+
+        <div>
+            <button mat-raised-button color="primary" (click)="ui.target.next(ui.ID.CONTACT.getString())">
+                <mat-icon fontSet="fa" fontIcon="fa-arrow-circle-down"></mat-icon>{{ui.CONSTANTS.CONTACT_ME.getString()}}
+            </button>
+        </div>
+    </div>
+</section>

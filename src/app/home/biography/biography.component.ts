@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Ui} from '../../shared/services/ui.service';
 
 @Component({
   selector: 'app-biography',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./biography.component.scss']
 })
 export class BiographyComponent implements OnInit {
+  bioImage = 'assets/images/home/biography.jpg';
 
-  constructor() { }
+  constructor(public ui: Ui) { }
 
   ngOnInit() {
   }

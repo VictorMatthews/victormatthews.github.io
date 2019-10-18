@@ -1,0 +1,24 @@
+@import '../../../../variables';
+
+.proficient-skill {
+  color: $primary1;
+  font-size: 1.5rem;
+}
+
+.non-proficient-skill {
+  color: $light_gray;
+  font-size: 1.5rem;
+}
+
+.professional-skills {
+  display: flex;
+}
+
+.professional-skills > * {
+  margin: 0;
+  align-self: center;  /* 1 */
+}
+
+.professional-skills > p {
+  margin-right: auto;  /* 2 */
+}

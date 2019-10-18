@@ -6,27 +6,35 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/modules/material.module';
-import { NavComponent } from './nav/nav.component';
+import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { IntroComponent } from './home/intro/intro.component';
+import { LandingComponent } from './home/landing/landing.component';
 import { PortfolioComponent } from './home/portfolio/portfolio.component';
 import { BiographyComponent } from './home/biography/biography.component';
 import { ContactComponent } from './home/contact/contact.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
+import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResumeComponent } from './resume/resume.component';
+import { JobComponent } from './resume/cards/job/job.component';
+import { EducationComponent } from './resume/cards/education/education.component';
+import { SkillComponent } from './resume/cards/skill/skill.component';
+import { GitRepoComponent } from './home/portfolio/cards/git-repo/git-repo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    MenuComponent,
     HomeComponent,
-    IntroComponent,
+    LandingComponent,
     PortfolioComponent,
     BiographyComponent,
     ContactComponent,
-    FooterComponent,
     ResumeComponent,
+    FooterComponent,
+    JobComponent,
+    EducationComponent,
+    SkillComponent,
+    GitRepoComponent,
   ],
   imports: [
     BrowserModule,

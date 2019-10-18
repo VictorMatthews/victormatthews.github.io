@@ -1,6 +1,6 @@
 <div class="main-content" [class.is-mobile]="mobileQuery.matches">
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #snav
+    <mat-sidenav #menu
       [opened]="mobileQuery.matches ? false : true"
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches">
@@ -8,7 +8,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="hamburger">
-        <button mat-icon-button (click)="snav.toggle()">
+        <button mat-icon-button (click)="menu.toggle()">
           <mat-icon fontSet="fas" fontIcon="fa-bars"></mat-icon>
         </button>
       </div>

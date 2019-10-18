@@ -1,0 +1,17 @@
+@import '../../../../../_variables.scss';
+
+.git-repo {
+  width: 400px;
+  background-color: $porcelain;
+  text-align: left;
+}
+
+.detail {
+  padding-right: 10px;
+}
+
+.repo-link {
+  img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,9 @@
+<mat-card class="git-repo">
+  <a class="repo-link" [href]="repo.html_url" target="_blank">{{repo.name}}</a>
+  <p>{{repo.description}}</p>
+  <div>
+    <span class="detail"><mat-icon fontSet="fa" fontIcon="fa-code"></mat-icon> {{repo.language}}</span>
+    <span class="detail"><mat-icon fontSet="fa" fontIcon="fa-star"></mat-icon> {{repo.stargazers_count}}</span>
+    <span class="detail"><mat-icon fontSet="fa" fontIcon="fa-code-branch"></mat-icon> {{repo.forks}}</span>
+  </div>
+</mat-card>

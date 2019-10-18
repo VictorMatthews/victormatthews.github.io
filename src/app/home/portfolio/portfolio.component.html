@@ -1,23 +1,15 @@
-<section id="portfolio" class="section">
+<section class="section portfolio">
     <div>
         <header>
-            <h2>Project Gallery</h2>
+            <h2>{{ui.CONSTANTS.PROJECT_GALLERY.getString()}}</h2>
         </header>
 
-        <p>Here are my github repos</p>
+        <p>{{ui.PARAGRAPHS.PORTFOLIO_P1.getString()}}</p>
 
         <mat-grid-list #grid cols="4" rowHeight="2:1">
-            <mat-grid-tile *ngFor="let p of portfolios">
-                <mat-card class="git-repo">
-                    <a href="{{p.html_url}}" target="_blank">{{ p.name }}</a>
-                    <p>{{ p.description }}</p>
-                    <div>
-                        <span><mat-icon fontSet="fa" fontIcon="fa-code"></mat-icon> {{ p.language }}</span>
-                        <span><mat-icon fontSet="fa" fontIcon="fa-star"></mat-icon> {{ p.stargazers_count }}</span>
-                        <span><mat-icon fontSet="fa" fontIcon="fa-code-branch"></mat-icon> {{ p.forks }}</span>
-                    </div>
-                </mat-card>
-            </mat-grid-tile>
+          <mat-grid-tile *ngFor="let repo of repos">
+            <app-git-repo [repo]="repo"></app-git-repo>
+          </mat-grid-tile>
         </mat-grid-list>
     </div>
 </section>

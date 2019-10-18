@@ -1,21 +1,5 @@
 @import '../../../variables';
 
-#portfolio {
+.portfolio {
     text-align: center;
-    a {
-        img {
-            width: 100%;
-        }
-    }
-    mat-card {
-        text-align: left;
-        span {
-            padding-right: 10px;
-        }
-    }
-}
-
-.git-repo {
-  width: 400px;
-  background-color: $porcelain;
 }
