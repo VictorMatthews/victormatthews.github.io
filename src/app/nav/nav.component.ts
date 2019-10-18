@@ -15,15 +15,15 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     // Set active nav by path
-    const currentPath = window.location.pathname.split('/')[1]
+    const currentPath = window.location.pathname.split('/')[1];
     if (currentPath !== '') {
-      this.activeEl = currentPath
+      this.activeEl = currentPath;
     }
   }
 
   scroll(id: string) {
     // TODO: figured out how to navigate on mobile
-    this.activeEl = id
+    this.activeEl = id;
     if (this.router.url !== '/') {
       this.router.navigate(['']);
       setTimeout(() => {
@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
   }
 
   navigateTo(path: string) {
-    this.activeEl = 'blog'
+    this.activeEl = path;
     this.router.navigate([path]);
     this.navService.target.next(null);
   }

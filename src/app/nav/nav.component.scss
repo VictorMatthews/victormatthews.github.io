@@ -1,9 +1,9 @@
 @import '../../variables';
 
-#header {
-    text-align: right;
-    color: $light_gray;
-    .top {
+#menu {
+  text-align: right;
+  color: $light_gray;
+  .top {
         padding: 20px;
         #logo {
             position: relative;
@@ -51,9 +51,9 @@
                         background: rgba(0, 0, 0, 0.15);
                         box-shadow: inset 0 0 0.25em 0 rgba(0, 0, 0, 0.125);
                         color: $white;
-                        mat-icon {
-                            color: #e27689;
-                        }
+                        //mat-icon {
+                        //    color: ;
+                        //}
                     }
                 }
             }
@@ -79,6 +79,7 @@
                     span {
                         display: none;
                     }
+                    color: $white;
                 }
             }
         }
