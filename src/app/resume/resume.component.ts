@@ -16,7 +16,6 @@ export class ResumeComponent implements OnInit {
 
   ngOnInit() {
     this.jobs = [
-
       {
         duration: 'Mar 2016 - Present',
         title: 'Software Engineer',

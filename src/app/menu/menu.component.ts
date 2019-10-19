@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {Ui} from '../shared/services/ui.service';
-import {ExternalLink, NavigationLink} from './menu.interface';
+import {ExternalLink, NavigationConstants, NavigationLink} from './menu.interface';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 
 @Component({
@@ -23,43 +23,73 @@ export class MenuComponent implements OnInit {
     if (currentPath !== '') {
       this.activeEl = currentPath;
     }
+    this.populateLinks();
+  }
 
+  scroll(id: string) {
+    if (this.router.url !== '/') {
+      this.router.navigate(['']);
+      setTimeout(() => {
+        this.ui.scroll(id);
+        this.ui.target.next(null);
+      }, 1000);
+    } else {
+      this.ui.scroll(id);
+      this.ui.target.next(null);
+    }
+  }
+
+  navigateTo(path: string, navType: string) {
+    this.activeEl = path;
+    if (navType === NavigationConstants.SCROLL) {
+      this.scroll(path);
+    } else if (navType === NavigationConstants.NAVIGATE_TO) {
+      this.router.navigate([path]);
+      this.ui.target.next(null);
+    }
+  }
+
+  isActive(id: string) {
+    if (id === this.activeEl) { return 'active'; }
+  }
+
+  populateLinks() {
     this.navigationLinks = [
       {
-        navigation: this.ui.ID.LANDING.getString(),
-        navType: 'scroll',
+        path: this.ui.ID.LANDING.getString(),
+        navType: NavigationConstants.SCROLL,
         className: 'landing-link',
         fontSet: 'fa',
         fontIcon: 'fa-home',
         label: this.ui.CONSTANTS.HOME.getString(),
       },
       {
-        navigation: this.ui.ID.PORTFOLIO.getString(),
-        navType: 'scroll',
+        path: this.ui.ID.PORTFOLIO.getString(),
+        navType: NavigationConstants.SCROLL,
         className: 'portfolio-link',
         fontSet: 'fa',
         fontIcon: 'fa-th',
         label: this.ui.CONSTANTS.PORTFOLIO.getString(),
       },
       {
-        navigation: this.ui.ID.BIOGRAPHY.getString(),
-        navType: 'scroll',
+        path: this.ui.ID.BIOGRAPHY.getString(),
+        navType: NavigationConstants.SCROLL,
         className: 'biography-link',
         fontSet: 'fa',
         fontIcon: 'fa-user',
         label: this.ui.CONSTANTS.BIOGRAPHY.getString(),
       },
       {
-        navigation: this.ui.ID.CONTACT.getString(),
-        navType: 'scroll',
+        path: this.ui.ID.CONTACT.getString(),
+        navType: NavigationConstants.SCROLL,
         className: 'contact-link',
         fontSet: 'fa',
         fontIcon: 'fa-envelope',
         label: this.ui.CONSTANTS.CONTACT.getString(),
       },
       {
-        navigation: this.ui.ID.RESUME.getString(),
-        navType: 'navigateTo',
+        path: this.ui.ID.RESUME.getString(),
+        navType: NavigationConstants.NAVIGATE_TO,
         className: 'resume-link',
         fontSet: 'fa',
         fontIcon: 'fa-file',
@@ -99,32 +129,5 @@ export class MenuComponent implements OnInit {
         label: 'Email',
       },
     ];
-  }
-
-  scroll(id: string) {
-    if (this.router.url !== '/') {
-      this.router.navigate(['']);
-      setTimeout(() => {
-        this.ui.scroll(id);
-        this.ui.target.next(null);
-      }, 1000);
-    } else {
-      this.ui.scroll(id);
-      this.ui.target.next(null);
-    }
-  }
-
-  navigateTo(path: string, navType: string) {
-    this.activeEl = path;
-    if (navType === 'scroll') {
-      this.scroll(path);
-    } else {
-      this.router.navigate([path]);
-      this.ui.target.next(null);
-    }
-  }
-
-  isActive(id: string) {
-    if (id === this.activeEl) { return 'active'; }
   }
 }
