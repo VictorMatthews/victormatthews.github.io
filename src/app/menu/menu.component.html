@@ -15,35 +15,11 @@
         <!-- Nav -->
         <nav id="nav">
             <ul>
-                <li [ngClass]="isActive(ui.ID.LANDING.getString())" (click)="scroll(ui.ID.LANDING.getString())">
-                    <div id="top-link" class="nav">
-                        <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
-                        {{ui.CONSTANTS.HOME.getString()}}
+                <li *ngFor="let navLink of navigationLinks" [ngClass]="isActive(navLink.navigation)" (click)="navigateTo(navLink.navigation, navLink.navType)">
+                    <div class="nav {{navLink.className}}">
+                        <mat-icon fontSet="{{navLink.fontSet}}" fontIcon="{{navLink.fontIcon}}"></mat-icon>
+                        {{navLink.label}}
                     </div>
-                </li>
-                <li [ngClass]="isActive(ui.ID.PORTFOLIO.getString())" (click)="scroll(ui.ID.PORTFOLIO.getString())">
-                    <div id="portfolio-link" class="nav">
-                        <mat-icon fontSet="fa" fontIcon="fa-th"></mat-icon>
-                        {{ui.CONSTANTS.PORTFOLIO.getString()}}
-                    </div>
-                </li>
-                <li [ngClass]="isActive(ui.ID.BIOGRAPHY.getString())" (click)="scroll(ui.ID.BIOGRAPHY.getString())">
-                    <div id="about-link" class="nav">
-                        <mat-icon fontSet="fa" fontIcon="fa-user"></mat-icon>
-                        {{ui.CONSTANTS.BIOGRAPHY.getString()}}
-                    </div>
-                </li>
-                <li [ngClass]="isActive(ui.ID.CONTACT.getString())" (click)="scroll(ui.ID.CONTACT.getString())">
-                    <div id="contact-link" class="nav">
-                        <mat-icon fontSet="fa" fontIcon="fa-envelope"></mat-icon>
-                        {{ui.CONSTANTS.CONTACT.getString()}}
-                    </div>
-                </li>
-                <li [ngClass]="isActive(ui.ID.RESUME.getString())" (click)="navigateTo(ui.ID.RESUME.getString())">
-                  <div id="resume-link" class="nav">
-                    <mat-icon fontSet="fa" fontIcon="fa-file"></mat-icon>
-                    {{ui.CONSTANTS.RESUME.getString()}}
-                  </div>
                 </li>
             </ul>
         </nav>
@@ -51,26 +27,14 @@
 
   <!-- Social Icons -->
   <div class="bottom">
-    <ul class="icons">
-        <li>
-            <a [href]="ui.CONSTANTS.MY_LINKEDIN_URL.getString()" class="icon" target="_blank">
-                <mat-icon fontSet="fab" fontIcon="fa-linkedin"></mat-icon>
-                <span class="label">LinkedIn</span>
-            </a>
-        </li>
-      <li>
-            <a [href]="ui.CONSTANTS.MY_GITHUB_URL.getString()" class="icon" target="_blank">
-                <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
-                <span class="label">Github</span>
-            </a>
-        </li>
-      <li>
-            <a [href]="ui.getMailToLink()" class="icon">
-                <mat-icon fontSet="fa" fontIcon="fa-envelope"></mat-icon>
-                <span class="label">Email</span>
-            </a>
-        </li>
-    </ul>
+      <ul class="icons">
+          <li *ngFor="let externalLink of externalLinks">
+              <a [href]="externalLink.url" class="icon" target="_blank">
+                  <mat-icon fontSet="{{externalLink.fontSet}}" fontIcon="{{externalLink.fontIcon}}"></mat-icon>
+                  <span class="label">{{externalLink.label}}</span>
+              </a>
+          </li>
+      </ul>
   </div>
 
 </div>
