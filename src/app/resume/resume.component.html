@@ -2,7 +2,7 @@
     <section class="top-header">
         <ul>
             <li><strong>{{ui.CONSTANTS.LOCATION.getString().toUpperCase()}}: </strong>{{ui.CONSTANTS.MY_LOCATION.getString()}}</li>
-            <li><strong>{{ui.CONSTANTS.CELL.getString().toUpperCase()}}: </strong>{{ui.CONSTANTS.MY_PHONE_NUMBER.getString()}}</li>
+            <li><strong>{{ui.CONSTANTS.CELL.getString().toUpperCase()}}: </strong><a [href]="ui.getPhoneCallLink()">{{ui.CONSTANTS.MY_PHONE_NUMBER.getString()}}</a></li>
             <li><strong>{{ui.CONSTANTS.EMAIL.getString().toUpperCase()}}: </strong> <a [href]="ui.getMailToLink()">{{ui.CONSTANTS.MY_EMAIL.getString()}}</a></li>
         </ul>
     </section>

@@ -31,6 +31,10 @@ export class Ui {
     return 'mailto:' + this.CONSTANTS.MY_EMAIL.getString();
   }
 
+  getPhoneCallLink(): string {
+    return 'tel:' + this.CONSTANTS.MY_PHONE_NUMBER.getString();
+  }
+
   isMobile(): boolean {
     return !UiUtil.isDesktop();
   }

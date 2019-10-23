@@ -32,7 +32,7 @@ export class Constants {
   readonly MY_NAME_IS = new Constant('My name is');
   readonly MY_OBJECTIVE = new Constant('My Objective');
   readonly MY_PAYPAL_URL = new Constant('https://paypal.me/VictorMatthewsX');
-  readonly MY_PHONE_NUMBER = new Constant('616 970 0690');
+  readonly MY_PHONE_NUMBER = new Constant('616-970-0690');
   readonly PORTFOLIO = new Constant('Portfolio');
   readonly PROFESSIONAL_SKILLS = new Constant('Professional Skills');
   readonly PROJECT_GALLERY = new Constant('Project Gallery');
