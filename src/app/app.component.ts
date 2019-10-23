@@ -12,7 +12,7 @@ import { Ui } from './shared/services/ui.service';
 export class AppComponent implements OnDestroy {
   @ViewChild('menu', {static: false}) menu: MatSidenav;
 
-  constructor(private ui: Ui, cdf: ChangeDetectorRef, media: MediaMatcher, matIconRegistry: MatIconRegistry) {
+  constructor(public ui: Ui, cdf: ChangeDetectorRef, media: MediaMatcher, matIconRegistry: MatIconRegistry) {
 
     matIconRegistry.registerFontClassAlias('fa');
     matIconRegistry.registerFontClassAlias('fab');
