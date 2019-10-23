@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Ui} from '../../shared/services/ui.service';
+import { Ui } from '../../shared/services/ui.service';
 
 @Component({
   selector: 'app-landing',

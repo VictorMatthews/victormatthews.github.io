@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {SkillSummary} from '../../resume.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { SkillSummary } from '../../resume.interface';
 
 @Component({
   selector: 'app-skill-card',

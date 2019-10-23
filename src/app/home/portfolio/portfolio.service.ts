@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { captureException } from '@sentry/core';
 import { HttpClient } from '@angular/common/http';
-import {GitRepo} from './portfolio.interface';
+import { GitRepo } from './portfolio.interface';
 
 @Injectable({
   providedIn: 'root'

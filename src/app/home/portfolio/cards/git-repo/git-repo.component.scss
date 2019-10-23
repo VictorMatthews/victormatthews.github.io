@@ -1,7 +1,7 @@
 @import '../../../../../_variables.scss';
 
 .git-repo {
-  background-color: $porcelain;
+  background-color: $accent1;
   text-align: left;
 }
 
@@ -20,12 +20,4 @@
 .repo-description {
   //color: black;
   text-align: left;
-}
-
-@media only screen and (min-width: 800px) {
-
-  .git-repo {
-    width: 450px;
-  }
-
 }

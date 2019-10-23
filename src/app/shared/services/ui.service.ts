@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Constants} from '../constants/constants';
-import {Paragraphs} from '../constants/paragraphs';
-import {Ids} from '../constants/ids';
-import {Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Constants } from '../constants/constants';
+import { Paragraphs } from '../constants/paragraphs';
+import { Ids } from '../constants/ids';
+import { Subject } from 'rxjs';
+import { UiUtil } from './ui-util';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class Ui {
   getMailToLink(): string {
     return 'mailto:' + this.CONSTANTS.MY_EMAIL.getString();
   }
+
+  isMobile(): boolean {
+    return !UiUtil.isDesktop();
+  }
+
 
 }

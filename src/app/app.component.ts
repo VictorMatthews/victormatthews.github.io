@@ -1,8 +1,8 @@
-import {MediaMatcher} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Component, ChangeDetectorRef, OnDestroy, ViewChild } from '@angular/core';
-import {Ui} from './shared/services/ui.service';
+import { Ui } from './shared/services/ui.service';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +12,7 @@ import {Ui} from './shared/services/ui.service';
 export class AppComponent implements OnDestroy {
   @ViewChild('menu', {static: false}) menu: MatSidenav;
 
-  mobileQuery: MediaQueryList;
-  readonly _mobileQueryListener: () => void;
-
   constructor(private ui: Ui, cdf: ChangeDetectorRef, media: MediaMatcher, matIconRegistry: MatIconRegistry) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => cdf.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
 
     matIconRegistry.registerFontClassAlias('fa');
     matIconRegistry.registerFontClassAlias('fab');
@@ -31,11 +25,10 @@ export class AppComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   closeSideNav() {
-    if (this.mobileQuery.matches) {
+    if (this.ui.isMobile()) {
       this.menu.close();
     }
   }

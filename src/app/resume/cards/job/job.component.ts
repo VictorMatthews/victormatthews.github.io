@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {JobSummary} from '../../resume.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { JobSummary } from '../../resume.interface';
 
 @Component({
   selector: 'app-job-card',

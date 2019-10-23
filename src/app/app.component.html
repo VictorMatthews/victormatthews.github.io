@@ -1,10 +1,10 @@
-<div class="main-content" [class.is-mobile]="mobileQuery.matches">
+<div class="main-content" [class.is-mobile]="ui.isMobile()">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #menu
-      [opened]="mobileQuery.matches ? false : true"
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches">
-      <app-nav></app-nav>
+      [opened]="ui.isMobile() ? false : true"
+      [mode]="ui.isMobile() ? 'over' : 'side'"
+      [fixedInViewport]="ui.isMobile()">
+      <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="hamburger">

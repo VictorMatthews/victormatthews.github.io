@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {EducationSummary} from '../../resume.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { EducationSummary } from '../../resume.interface';
+import { Ui } from '../../../shared/services/ui.service';
 
 @Component({
   selector: 'app-education-card',
@@ -9,7 +10,7 @@ import {EducationSummary} from '../../resume.interface';
 export class EducationComponent implements OnInit {
   @Input() education: EducationSummary;
 
-  constructor() { }
+  constructor(public ui: Ui) { }
 
   ngOnInit() {
   }
