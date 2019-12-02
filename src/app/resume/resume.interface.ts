@@ -9,7 +9,7 @@ export class JobSummary {
   duration: string;
   title: string;
   company: string;
-  description: string;
+  description: string[];
 }
 
 export class SkillSummary {

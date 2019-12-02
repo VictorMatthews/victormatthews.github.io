@@ -12,22 +12,35 @@ export class ResumeService {
     callback(
       [
         {
-          duration: 'Mar 2016 - Present',
+          duration: 'March 2016 - Present',
           title: 'Software Engineer',
           company: 'Gordon Food Service',
-          description: 'Working with the IT Warehouse team, I have helped develop and support the warehouse management system. On a team of 14 people I played a big part in one of the most recent warehouse projects where we created and deployed a new Angular app to replace old telnet devices in the warehouses. This project updated and revamped software used throughout the entire warehouse for receiving, selection, inventory control, and shipping. I completed 22% of the 200+ bugs that came in over the 10 month roll-out of the software.',
+          description: [
+            'Working with the IT Warehouse team, I have helped develop and support the warehouse management system.',
+            'Subject matter expert on Inventory Control and Material Handling Control Systems.',
+            'On a team of 14 people I played a big part in the most recent warehouse project where we created and deployed a new Angular app to replace old telnet devices in the warehouses.',
+            'Updated and revamped software used throughout the entire warehouse for receiving, selection, inventory control, and shipping.',
+            'Completed 22% of the 200+ bugs that came in over the 10 month roll-out of the software to all warehouses.',
+          ],
         },
         {
-          duration: 'May 2015 - Mar 2016',
+          duration: 'May 2015 - March 2016',
           title: 'Asset Administrator',
           company: 'Gordon Food Service',
-          description: 'Working with the North American Asset Management team. I automated the internal hardware & software PO request system, resulting in our team winning the J&P Cup award that year.',
+          description: [
+            'Working with the North American Asset Management team. I automated the internal IT hardware & software PO request system using JavaScript and Google Apps Script, resulting in faster throughput for PO requests.',
+            'Awarded the Gordon Food Service J&P Cup award, a yearly award given to one of the IT teams.',
+            'Implemented field validation for forms to make sure the user had all the information needed, based on their specific requests.',
+            'Added the ability for an Asset Administrator on the team to generate a PO number, save as a PDF, and store the request in the proper folder with a click of a button.',
+          ],
         },
         {
-          duration: 'Sept 2013 - May 2015',
+          duration: 'September 2013 - May 2015',
           title: 'Sales Associate',
           company: 'Gordon Food Service',
-          description: 'Working at the GFS Store in Cascade, MI',
+          description: [
+            'Working at the GFS Store in Cascade, MI'
+          ],
         },
       ]
     );
@@ -37,7 +50,7 @@ export class ResumeService {
     callback(
       [
         {
-          title: 'B.S. Digital Media Software Engineering',
+          title: 'Bachelor of Science in Digital Media Software Engineering',
           duration: '2013-2017',
           institution: 'Ferris State University',
           location: 'Grand Rapids, MI',

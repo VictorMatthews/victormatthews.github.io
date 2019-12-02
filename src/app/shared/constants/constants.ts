@@ -19,7 +19,7 @@ export class Constants {
   readonly DOWNLOAD_PDF_RESUME = new Constant('Download PDF version of my resume');
   readonly EMAIL = new Constant('Email');
   readonly EDUCATION = new Constant('Education');
-  readonly EMPLOYMENT = new Constant('Employment');
+  readonly EXPERIENCE = new Constant('Experience');
   readonly HOME = new Constant('Home');
   readonly LOCATION = new Constant('Location');
   readonly MY_EMAIL = new Constant('victormmatthews@gmail.com');

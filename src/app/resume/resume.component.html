@@ -9,7 +9,7 @@
 
     <header>
         <h1>{{ui.CONSTANTS.MY_NAME.getString().toUpperCase()}}</h1>
-        <h3><span class="blue-dot">&bull;</span> {{ui.CONSTANTS.MY_JOB_TITLE.getString()}} <span class="blue-dot">&bull;</span></h3>
+        <h3><span>&bull;</span> {{ui.CONSTANTS.MY_JOB_TITLE.getString()}} <span>&bull;</span></h3>
     </header>
 
     <section class="below-header">
@@ -23,7 +23,7 @@
     <div class="experience">
         <div class="left">
             <div class="work-title">
-                <h2><span class="square"></span>{{ui.CONSTANTS.EMPLOYMENT.getString()}}</h2>
+                <h2><span class="square"></span>{{ui.CONSTANTS.EXPERIENCE.getString()}}</h2>
             </div>
             <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
 
