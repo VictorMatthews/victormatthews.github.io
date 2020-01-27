@@ -72,10 +72,10 @@ export class MenuService {
           label: 'GitHub',
         },
         {
-          url: this.ui.CONSTANTS.MY_PAYPAL_URL.getString(),
+          url: this.ui.CONSTANTS.MY_HACKER_RANK_URL.getString(),
           fontSet: 'fab',
-          fontIcon: 'fa-paypal',
-          label: 'Paypal',
+          fontIcon: 'fa-hackerrank',
+          label: 'HackerRank',
         },
         {
           url: this.ui.CONSTANTS.MY_FACEBOOK_URL.getString(),

@@ -25,6 +25,7 @@ export class Constants {
   readonly MY_EMAIL = new Constant('victormmatthews@gmail.com');
   readonly MY_FACEBOOK_URL = new Constant('https://www.facebook.com/victormmatthews');
   readonly MY_GITHUB_URL = new Constant('https://github.com/victormatthews');
+  readonly MY_HACKER_RANK_URL = new Constant('https://www.hackerrank.com/victormmatthews');
   readonly MY_JOB_TITLE = new Constant('Software Engineer');
   readonly MY_LOCATION = new Constant('Denver Colorado USA');
   readonly MY_LINKEDIN_URL = new Constant('https://www.linkedin.com/in/victor-matthews-x/');
