@@ -10,7 +10,7 @@ import { Ui } from './shared/services/ui.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  @ViewChild('menu', {static: false}) menu: MatSidenav;
+  @ViewChild('menu') menu: MatSidenav;
 
   constructor(public ui: Ui, cdf: ChangeDetectorRef, media: MediaMatcher, matIconRegistry: MatIconRegistry) {
 
