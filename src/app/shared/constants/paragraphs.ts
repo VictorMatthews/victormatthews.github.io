@@ -9,8 +9,13 @@ export class Paragraph {
 
 export class Paragraphs {
   readonly BIO_P1 = new Paragraph('I first started programming in college with the intention of going into video game development. Although I still have a passion for video games I do not believe I want to work on them for a living.');
-  readonly BIO_P2 = new Paragraph('I have attained knowledge in the full stack of development in my current role at Gordon Food Service. I am apart of the IT Warehouse team where I help develop and support warehouse management software.');
-  readonly BIO_P3 = new Paragraph('In my spare time, if I\'m not binge watching TV or playing video games, you can find me at craft breweries or hiking around Colorado.');
+  readonly BIO_P2 = new Paragraph('I started my career at Gordon Food Service working in on of their stored in the greater Grand Rapids area. I quickly became a reliable employee, and first on the list for managers to call if someone called in sick. ' +
+    'Corporate would occasionally send in someone to the store, to get a feel for how they operated and to also gauge if there were any improvements that could be made. A little over a year of working in the store someone from corporate got paired with me for a day. ' +
+    'We got to chatting and I found out he was a team manager for the team that develops all the software used in the stores. I let him know I was currently working on my degree for software engineering, and exchanged emails. After emailing back and forth I was able ' +
+    'to land a job as an asset administrator. Where my main task was to find ways to innovate their current process\'. I found a way to improve on the internal hardware/software PO request form used throughout IT. removing multiple manual steps and simplifying the ' +
+    'overall process of both the requester and the asset admin who had to process the PO. A little under a year on that team, I saw an opening on the IT Warehouse team for a software engineer. Even though I was still working on my degree, I applied for the position. ' +
+    'I stood out as a strong candidate and landed that position. During my time on that team I have attained knowledge in the full stack of development, by helping to both develop and maintain the warehouse management software.');
+  readonly BIO_P3 = new Paragraph('In my spare time you can find me brewing my own beer or adventuring out to craft breweries and hiking around Colorado, that is when I\'m not deeply immersed in a video game.');
 
   readonly CONTACT_P1 = new Paragraph('If you need help with a project or have a job opportunity? Send me an email.');
 
