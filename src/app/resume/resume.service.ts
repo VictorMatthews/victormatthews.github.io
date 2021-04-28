@@ -12,7 +12,17 @@ export class ResumeService {
     callback(
       [
         {
-          duration: 'March 2016 - Present',
+          duration: 'May 2021 - Present',
+          title: 'Software Engineer',
+          company: 'Boeing',
+          description: [
+            'Working with the Aviation Data Solutions team, I have helped develop and support the aviation data management system that manages data for airline and business customers around the world.',
+            'Drove the daily execution of product development in a fast paced agile environment. Involved in the entire software development life cycle, from idea creation and development, all the way through to maintenance and support of the customer’s delivered system.',
+            'Decomposed complex requirements and capabilities into executable discrete user stories, using Java to develop the aviation data management system with integration, testing, and delivery within a CI/CD pipeline.',
+          ],
+        },
+        {
+          duration: 'March 2016 - May 2021',
           title: 'Software Engineer',
           company: 'Gordon Food Service',
           description: [
