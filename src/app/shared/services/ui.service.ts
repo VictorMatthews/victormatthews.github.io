@@ -24,7 +24,7 @@ export class Ui {
 
   public scroll(id: string) {
     const el = document.getElementsByClassName(id).item(0);
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView();
   }
 
   getMailToLink(): string {

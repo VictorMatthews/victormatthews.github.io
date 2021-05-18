@@ -1,7 +1,7 @@
 <div class="main-content" [class.is-mobile]="ui.isMobile()">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #menu
-      [opened]="ui.isMobile() ? false : true"
+      [opened]="!ui.isMobile()"
       [mode]="ui.isMobile() ? 'over' : 'side'"
       [fixedInViewport]="ui.isMobile()">
       <app-menu></app-menu>

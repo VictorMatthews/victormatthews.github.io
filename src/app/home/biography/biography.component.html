@@ -8,9 +8,7 @@
           <img src="{{bioImage}}" width="100%" alt="{{ui.CONSTANTS.MY_NAME.getString()}}">
         </div>
         <div>
-          <p>{{ui.PARAGRAPHS.BIO_P1.getString()}}</p>
-          <p>{{ui.PARAGRAPHS.BIO_P2.getString()}}</p>
-          <p>{{ui.PARAGRAPHS.BIO_P3.getString()}}</p>
+          <p *ngFor="let paragraph of paragraphs">{{paragraph.getString()}}</p>
         </div>
       </div>
     </div>

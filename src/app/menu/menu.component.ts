@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
       setTimeout(() => {
         this.ui.scroll(id);
         this.ui.target.next(null);
-      }, 1000);
+      }, 0);
     } else {
       this.ui.scroll(id);
       this.ui.target.next(null);
