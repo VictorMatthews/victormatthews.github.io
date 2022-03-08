@@ -1,4 +1,4 @@
-<div class="main-content" [class.is-mobile]="ui.isMobile()">
+<div *ngIf="ui.showMenu()" class="main-content" [class.is-mobile]="ui.isMobile()">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #menu
       [opened]="!ui.isMobile()"
@@ -16,4 +16,7 @@
       <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>
+<div *ngIf="!ui.showMenu()">
+  <router-outlet></router-outlet>
 </div>

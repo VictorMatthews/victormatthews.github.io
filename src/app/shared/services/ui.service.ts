@@ -13,6 +13,7 @@ export class Ui {
   PARAGRAPHS = new Paragraphs();
   ID = new Ids();
   target = new Subject();
+  hideMenu = false;
 
   constructor() {
     this.target.subscribe( id => {
@@ -37,6 +38,10 @@ export class Ui {
 
   isMobile(): boolean {
     return !UiUtil.isDesktop();
+  }
+
+  showMenu(): boolean {
+    return !this.hideMenu;
   }
 
 
