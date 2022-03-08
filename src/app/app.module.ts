@@ -19,6 +19,7 @@ import { JobComponent } from './resume/cards/job/job.component';
 import { EducationComponent } from './resume/cards/education/education.component';
 import { SkillComponent } from './resume/cards/skill/skill.component';
 import { GitRepoComponent } from './home/portfolio/cards/git-repo/git-repo.component';
+import { BeerFundComponent } from './beer-fund/beer-fund.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { GitRepoComponent } from './home/portfolio/cards/git-repo/git-repo.compo
     EducationComponent,
     SkillComponent,
     GitRepoComponent,
+    BeerFundComponent,
   ],
   imports: [
     BrowserModule,
