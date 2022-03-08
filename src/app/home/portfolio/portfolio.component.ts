@@ -8,7 +8,7 @@ import { GitRepo } from './portfolio.interface';
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-export class PortfolioComponent implements OnInit{
+export class PortfolioComponent implements OnInit {
   repos: GitRepo[] = [];
 
   constructor(public ui: Ui, private portfolioService: PortfolioService) {

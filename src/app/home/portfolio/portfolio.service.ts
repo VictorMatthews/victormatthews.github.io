@@ -30,7 +30,7 @@ export class PortfolioService {
           filteredProjects.push(mappedProject);
       }
     } catch (error) {
-      captureException(error)
+      captureException(error);
       console.error(error);
     }
 

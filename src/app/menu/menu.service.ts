@@ -90,6 +90,6 @@ export class MenuService {
           label: 'Email',
         },
       ]
-    )
+    );
   }
 }
