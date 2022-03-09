@@ -29,10 +29,9 @@ export class BeerFundComponent implements OnInit {
     },
   ];
 
-  constructor(private ui: Ui) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.ui.hideMenu = true;
   }
 
 }

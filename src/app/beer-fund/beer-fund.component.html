@@ -14,7 +14,7 @@
 
     <div *ngFor="let button of buttons" class="beer-fund-button">
       <a [href]="button.link" class="link" target="_blank">
-<!--        <mat-icon fontSet="{{button.fontSet}}" fontIcon="{{button.fontIcon}}"></mat-icon>-->
+        <mat-icon class="button-icon" fontSet="{{button.fontSet}}" fontIcon="{{button.fontIcon}}"></mat-icon>
         <p class="button-text">{{button.text}}</p>
       </a>
     </div>

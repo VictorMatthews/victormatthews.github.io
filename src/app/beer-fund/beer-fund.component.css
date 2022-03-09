@@ -1,14 +1,9 @@
-body {}
-
 .beer-fund {
   flex-direction: column;
   position: relative;
-  padding-bottom: 0px;
-  min-height: 100vh;
+  padding-bottom: 75px;
   overflow-x: hidden;
   width: 100%;
-  height: 100%;
-  background-color: rgb(98, 168, 71);
 }
 
 .beer-fund-button-group {
@@ -17,7 +12,6 @@ body {}
 }
 
 .beer-fund-button {
-  z-index: 0;
   overflow: hidden;
   border: 2px solid rgb(39, 45, 37);
   transition: none 0s ease 0s;
@@ -25,7 +19,7 @@ body {}
   color: rgb(0, 0, 0);
   background-color: rgb(151, 211, 132);
   margin-bottom: 24px;
-  width: calc(100% - 12px);
+  width: calc(100% - 20px);
   border-radius: 30px;
 }
 
@@ -51,41 +45,16 @@ body {}
   -webkit-box-align: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 12px;
+  margin-top: 35px;
   width: 100%;
 }
 
 .link {
-  margin: 0px;
-  border: none;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
   text-align: center;
   cursor: pointer;
-  background: none;
-  text-decoration: none;
+  color: rgb(0, 0, 0);
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  height: auto;
-  position: relative;
-  padding: 16px 20px;
-  width: 100%;
-  appearance: none;
-  box-sizing: border-box;
-  vertical-align: middle;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  white-space: normal;
-  background: none;
-  color: inherit;
-  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
-  padding-left: 66px;
-  padding-right: 66px;
+  padding: 16px;
 }
 
 .image {
@@ -118,13 +87,20 @@ body {}
   white-space: nowrap;
   overflow: hidden;
   grid-column-start: 2;
+  font-family: 'Barlow', sans-serif;
 }
 
 .button-text {
-   padding: 0px;
-   margin: 0px;
-   line-height: 1.5;
-   width: 100%;
-   position: relative;
-   hyphens: none;
+  padding: 0px;
+  margin: 0px 10px 0px 0px;
+  line-height: 1.5;
+  width: 100%;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+}
+
+.button-icon {
+  alignment: center;
+  vertical-align: center;
+  font-size: 25px;
 }

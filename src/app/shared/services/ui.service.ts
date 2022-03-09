@@ -13,7 +13,6 @@ export class Ui {
   PARAGRAPHS = new Paragraphs();
   ID = new Ids();
   target = new Subject();
-  hideMenu = false;
 
   constructor() {
     this.target.subscribe( id => {
