@@ -40,9 +40,5 @@ export class Ui {
     return !UiUtil.isDesktop();
   }
 
-  showMenu(): boolean {
-    return !this.hideMenu;
-  }
-
 
 }

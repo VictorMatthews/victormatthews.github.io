@@ -1,13 +1,13 @@
-<div *ngIf="ui.showMenu()" class="main-content" [class.is-mobile]="ui.isMobile()">
+<div class="main-content" [class.is-mobile]="ui.isMobile()">
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #menu
+    <mat-sidenav *ngIf="showMenu()" #menu
       [opened]="!ui.isMobile()"
       [mode]="ui.isMobile() ? 'over' : 'side'"
       [fixedInViewport]="ui.isMobile()">
       <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="hamburger">
+      <div *ngIf="showMenu()" class="hamburger">
         <button mat-icon-button (click)="menu.toggle()">
           <mat-icon fontSet="fas" fontIcon="fa-bars"></mat-icon>
         </button>
@@ -16,7 +16,4 @@
       <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
-<div *ngIf="!ui.showMenu()">
-  <router-outlet></router-outlet>
 </div>
