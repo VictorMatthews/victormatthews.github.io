@@ -16,9 +16,9 @@ export class ResumeService {
           title: 'Software Engineer',
           company: 'Boeing',
           description: [
-            'Working with the Aviation Data Solutions team, I have helped develop and support the aviation data management system that manages data for airline and business customers around the world.',
-            'Drove the daily execution of product development in a fast paced agile environment. Involved in the entire software development life cycle, from idea creation and development, all the way through to maintenance and support of the customer’s delivered system.',
-            'Decomposed complex requirements and capabilities into executable discrete user stories, using Java to develop the aviation data management system with integration, testing, and delivery within a CI/CD pipeline.',
+            'Working with the Aviation Data Solutions group, helped develop and support Angular UI\'s that manage data for airline and business customers around the world.',
+            'Drove the daily execution of product development in a fast paced agile environment. Involved in the entire software development life cycle, from idea creation and development, all the way through to maintenance and support of the delivered system.',
+            'Decomposed complex requirements and capabilities into executable discrete user stories, using Angular to develop UI\'s with integration, testing, and delivery within a CI/CD pipeline',
           ],
         },
         {
