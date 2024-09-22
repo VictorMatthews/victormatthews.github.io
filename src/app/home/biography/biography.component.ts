@@ -18,6 +18,7 @@ export class BiographyComponent implements OnInit {
       this.ui.PARAGRAPHS.BIO_P1,
       this.ui.PARAGRAPHS.BIO_P2,
       this.ui.PARAGRAPHS.BIO_P3,
+      this.ui.PARAGRAPHS.BIO_P4,
     ];
   }
 
