@@ -13,4 +13,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Deployment
 
-Run `ng deploy` to have [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) build and push the changes to the `gh-pages` branch. Then create a PR to merge `gh-pages` into `master`
+Run `ng deploy --no-silent` to have [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) build and push the changes to the `gh-pages` branch. Then create a PR to merge `gh-pages` into `master`
+
+If you get an error during the deploy you may need to increase the git http.postBuffer. This can be done with `git config --global http.postBuffer 257286400`
