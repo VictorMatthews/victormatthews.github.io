@@ -19,7 +19,7 @@ export class Paragraphs {
 
   readonly CONTACT_P1 = new Paragraph('If you need help with a project or have a job opportunity? Send me an email.');
 
-  readonly LANDING_P1 = new Paragraph('I am a Denver based software engineer who has professional experience with Angular, NodeJS, Java, Javasript/TypeScript, SQL, HTML 5 and CSS');
+  readonly LANDING_P1 = new Paragraph('I am a Denver based software engineer who has professional experience with Python, Angular, NodeJS, Java, TypeScript/JavaScript, SQL, HTML 5 and CSS');
 
   readonly PORTFOLIO_P1 = new Paragraph('Here are my github repos');
 
