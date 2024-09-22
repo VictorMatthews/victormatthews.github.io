@@ -16,9 +16,10 @@ export class ResumeService {
           title: 'Software Engineer',
           company: 'Boeing',
           description: [
-            'Working with the Aviation Data Solutions group, helped develop and support Angular UI\'s that manage data for airline and business customers around the world.',
+            'Created a workflow in DataBricks for aeronautical data extraction, resulting in over 100x faster data delivery to customers.',
+            'Led development of Angular UI\'s to configure aeronautical data needs for airline and business customers around the world.',
             'Drove the daily execution of product development in a fast paced agile environment. Involved in the entire software development life cycle, from idea creation and development, all the way through to maintenance and support of the delivered system.',
-            'Decomposed complex requirements and capabilities into executable discrete user stories, using Angular to develop UI\'s with integration, testing, and delivery within a CI/CD pipeline',
+            'Decomposed complex requirements and capabilities into executable discrete user stories, using Python to develop backend\'s and Angular to develop UI\'s with integration, testing, and delivery in a CI/CD pipeline.',
           ],
         },
         {
@@ -26,11 +27,10 @@ export class ResumeService {
           title: 'Software Engineer',
           company: 'Gordon Food Service',
           description: [
-            'Working with the IT Warehouse team, I have helped develop and support the warehouse management system.',
+            'Working with the IT Warehouse team, helped develop and support the warehouse management system.',
             'Subject matter expert on Inventory Control and Material Handling Control Systems.',
-            'On a team of 14 people I played a big part in the most recent warehouse project where we created and deployed a new Angular app to replace old telnet devices in the warehouses.',
-            'Updated and revamped software used throughout the entire warehouse for receiving, selection, inventory control, and shipping.',
-            'Completed 22% of the 200+ bugs that came in over the 10 month roll-out of the software to all warehouses.',
+            'Created and deployed a new Angular app, replacing the old telnet devices in the warehouses.',
+            'Updated and revamped software used throughout the warehouse for receiving, selection, inventory control, and shipping.',
           ],
         },
         {
@@ -38,10 +38,9 @@ export class ResumeService {
           title: 'Asset Administrator',
           company: 'Gordon Food Service',
           description: [
-            'Working with the North American Asset Management team. I automated the internal IT hardware & software PO request system using JavaScript and Google Apps Script, resulting in faster throughput for PO requests.',
+            'Automated the internal IT hardware & software PO request system using JavaScript, resulting in faster throughput for PO requests.',
+            'Implemented field validation for forms to ensure the user entered all the information needed, based on the specific users requests.',
             'Awarded the Gordon Food Service J&P Cup award, a yearly award given to one of the IT teams.',
-            'Implemented field validation for forms to make sure the user had all the information needed, based on their specific requests.',
-            'Added the ability for an Asset Administrator on the team to generate a PO number, save as a PDF, and store the request in the proper folder with a click of a button.',
           ],
         },
         {
@@ -73,6 +72,10 @@ export class ResumeService {
     callback(
       [
         {
+          skillName: 'Python',
+          skillLevel: 5,
+        },
+        {
           skillName: 'Java',
           skillLevel: 5,
         },
@@ -85,7 +88,7 @@ export class ResumeService {
           skillLevel: 4,
         },
         {
-          skillName: 'Javascript/TypeScript',
+          skillName: 'TypeScript/JavaScript',
           skillLevel: 4,
         },
         {
@@ -102,14 +105,6 @@ export class ResumeService {
         },
         {
           skillName: 'Node.js',
-          skillLevel: 3,
-        },
-        {
-          skillName: 'Spring',
-          skillLevel: 3,
-        },
-        {
-          skillName: 'Maven',
           skillLevel: 3,
         },
       ]
