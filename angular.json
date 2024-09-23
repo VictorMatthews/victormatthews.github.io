@@ -130,7 +130,6 @@
       }
     }
   },
-  "defaultProject": "victormatthews.github.io",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
