@@ -43,6 +43,6 @@ readonly CONTACT_P1 = new Paragraph(['If you need help with a project or have a 
   readonly PORTFOLIO_P1 = new Paragraph(['Here are my github repos']);
 
   readonly RESUME_OBJECTIVE = new Paragraph(['Continually grow my knowledge in all areas of programming. I have a new found',
-    'passion for the web space, but my preference still lies on backends. My next goal in life is to rid the world',
-    'of web apps not designed for the color blind.']);
+    'passion for the web space, but my preference still lies on backends. My next goal in life is to find a way to combine my',
+    'love of software and fermentation.']);
 }
