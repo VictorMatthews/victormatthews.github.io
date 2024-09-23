@@ -13,7 +13,7 @@ import { PortfolioComponent } from './home/portfolio/portfolio.component';
 import { BiographyComponent } from './home/biography/biography.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ResumeComponent } from './resume/resume.component';
 import { JobComponent } from './resume/cards/job/job.component';
 import { EducationComponent } from './resume/cards/education/education.component';
@@ -21,32 +21,25 @@ import { SkillComponent } from './resume/cards/skill/skill.component';
 import { GitRepoComponent } from './home/portfolio/cards/git-repo/git-repo.component';
 import { BeerFundComponent } from './beer-fund/beer-fund.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    HomeComponent,
-    LandingComponent,
-    PortfolioComponent,
-    BiographyComponent,
-    ContactComponent,
-    ResumeComponent,
-    FooterComponent,
-    JobComponent,
-    EducationComponent,
-    SkillComponent,
-    GitRepoComponent,
-    BeerFundComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MaterialModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MenuComponent,
+        HomeComponent,
+        LandingComponent,
+        PortfolioComponent,
+        BiographyComponent,
+        ContactComponent,
+        ResumeComponent,
+        FooterComponent,
+        JobComponent,
+        EducationComponent,
+        SkillComponent,
+        GitRepoComponent,
+        BeerFundComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MaterialModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 
 export class AppModule { }
