@@ -13,7 +13,7 @@ export class ResumeService {
       [
         {
           duration: 'May 2021 - Present',
-          title: 'Software Engineer',
+          title: 'Senior Software Engineer',
           company: 'Boeing',
           description: [
             'Created a workflow in DataBricks for aeronautical data extraction, resulting in over 100x faster data delivery to customers.',
