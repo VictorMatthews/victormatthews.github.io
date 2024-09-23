@@ -3,6 +3,8 @@
 .git-repo {
   background-color: $accent1;
   text-align: left;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  padding: 15px;
 }
 
 .detail {
@@ -20,4 +22,8 @@
 .repo-description {
   //color: black;
   text-align: left;
+}
+
+mat-icon {
+  overflow: unset;
 }
