@@ -28,10 +28,9 @@ export class Paragraphs {
 
   readonly BIO_P3 = new Paragraph(['In 2021 I started working for Boeing, where I quickly became the go to engineer for Angular projects.',
     'Even though I was hired for a backend position, on day one I was asked to help out another team finish up an Angular app due to my',
-    'previous experience. I was one of two engineers working on the UI for that project, where I helped finish the few features left,',
-    'as well as fix the defects from their backlog. After which I was moved around from project to project to help wrap up Angular apps.',
-    'In the fall of 2023 I was able go to the team that hired me, Using Python and DataBricks, I created a workflow to improve the aeronautical',
-    'data extract for faster delivery of data to our customers.']);
+    'previous experience. After helping finish that application, I was asked to lead 2 other Angular projects. In the fall of 2023 I was', 
+    'able go to the team that hired me, Using Python and DataBricks, I created a workflow to improve the aeronautical data extract for', 
+    'faster delivery of data to our customers.']);
 
   readonly BIO_P4 = new Paragraph(['In my spare time you can find me brewing my own beer or adventuring out to craft breweries and hiking around',
     'Colorado, that is when I\'m not deeply immersed in a video game.']);
@@ -44,6 +43,6 @@ readonly CONTACT_P1 = new Paragraph(['If you need help with a project or have a 
   readonly PORTFOLIO_P1 = new Paragraph(['Here are my github repos']);
 
   readonly RESUME_OBJECTIVE = new Paragraph(['Continually grow my knowledge in all areas of programming. I have a new found',
-    'passion for the web space, but I really enjoy Java and working on back-ends. My next goal in life is to rid the world',
+    'passion for the web space, but my preference still lies on backends. My next goal in life is to rid the world',
     'of web apps not designed for the color blind.']);
 }
