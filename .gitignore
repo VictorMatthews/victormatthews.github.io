@@ -1,46 +1,20 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-.angular/
-
-# compiled output
-/dist
-/dist-server
-/tmp
-/out-tsc
-
 # dependencies
 /node_modules
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# build output
+/dist
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# astro cache
+.astro
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+# logs
+*.log
+npm-debug.log*
 
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-# System Files
+# editor / OS
 .DS_Store
 Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Keep package-lock.json committed for reproducible CI (npm ci).
