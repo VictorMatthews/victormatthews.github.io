@@ -5,16 +5,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
 
-// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
-// hard-coded here. Pure static: no client JS. Skill proficiency is rendered with
-// pure-CSS dots (filled `level` of 5), so the page stays fast and static.
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name, title, location, objective, experience, education, skills, resumePdf } =
   profile.data;
 
-// Skills are scored on a 1–5 scale (see the content schema); render `level` of
-// `MAX_LEVEL` filled dots per skill.
 const MAX_LEVEL = 5;
 ---
 

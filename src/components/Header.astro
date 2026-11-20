@@ -1,21 +1,17 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 
-// The Header is reused on the Resume (Step 5) and Beer-Fund (Step 6) pages, so
-// it pulls its brand from the `profile` collection instead of hard-coding copy.
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name } = profile.data;
 
 interface Props {
-  // Key of the nav item to mark as the current page (e.g. "resume",
-  // "beer-fund"). Omitted on the home page, where no item is active.
   active?: string;
 }
 
 const { active } = Astro.props;
 
-const base = "/"; // Astro.config.base; // '/' for this root user page
+const base = "/";
 
 const navLinks = [
   { key: 'home', label: 'Home', href: `${Astro.url.origin}` },

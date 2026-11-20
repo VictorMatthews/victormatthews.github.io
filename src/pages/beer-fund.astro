@@ -5,15 +5,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
 
-// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
-// hard-coded here. Pure static: the three buttons are plain <a> links that open
-// in a new tab — no payment SDK, no client JS.
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name, beerFund } = profile.data;
 if (!beerFund) throw new Error('beerFund not found');
 
-// A short, human "opens in a new tab" hint for the external-link glyph.
 const newTabHint = 'Opens in a new tab';
 ---
 
