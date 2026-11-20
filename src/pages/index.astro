@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -7,7 +7,7 @@ import Section from '../components/Section.astro';
 
 // Every piece of copy comes from the `profile` collection (Step 3) — nothing is
 // hard-coded here. No client JS, no portfolio, no GitHub fetch: pure static.
-const profile = getCollection('profile')[0];
+const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name, title, location, landing, bio, email, phone } = profile.data;
 

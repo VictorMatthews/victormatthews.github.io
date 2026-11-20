@@ -1,7 +1,7 @@
 /**
  * The single `profile` document — every piece of site copy and structured data
  * lives here. Edit copy in this one place; every page reads it via
- * `getCollection('profile')` / `getDataEntryById('profile', 'index')`.
+ * `getEntry('profile', 'main')`.
  *
  * NOTE ON AUTHORING
  * -----------------

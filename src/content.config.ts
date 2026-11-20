@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import profileData from './content/profile/index.js';
 
 /**
@@ -28,8 +29,7 @@ import profileData from './content/profile/index.js';
  */
 const profile = defineCollection({
   loader: async () => {
-    console.log('[profile loader] keys:', Object.keys(profileData || {}), 'typeof:', typeof profileData);
-    return { index: profileData };
+    return { "main": profileData };
   },
   schema: z.object({
     name: z.string(),

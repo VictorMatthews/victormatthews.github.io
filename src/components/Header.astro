@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 // The Header is reused on the Resume (Step 5) and Beer-Fund (Step 6) pages, so
 // it pulls its brand from the `profile` collection instead of hard-coding copy.
-const profile = getCollection('profile')[0];
+const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name } = profile.data;
 
-const base = Astro.config.base; // '/' for this root user page
+const base = "/"; // Astro.config.base; // '/' for this root user page
 const onHome = Astro.url.pathname === base;
 
 // In-page anchors resolve to sections on the current (home) page; from other
