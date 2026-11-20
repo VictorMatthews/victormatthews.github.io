@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
 
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
@@ -19,7 +20,7 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 >
   <Header />
 
-  <main>
+  <main id="main">
     <!-- 1. Landing / hero -->
     <section id="landing" class="hero container">
       <div class="hero__text">
@@ -28,9 +29,9 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
         <p class="hero__title">{title}</p>
         <p class="hero__loc mono">{location}</p>
         <p class="hero__landing">{landing}</p>
-        <a class="btn" href="#contact">
+        <Button href="#contact">
           Work with me <span aria-hidden="true">→</span>
-        </a>
+        </Button>
       </div>
       <div class="hero__media">
         <img
@@ -39,6 +40,8 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
           width="360"
           height="360"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
       </div>
     </section>
@@ -55,11 +58,10 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
           <img
             src="/images/home/biography.jpg"
             alt="Victor at work"
-            min-width="640"
-            min-height="480"
-            max-width="640"
-            max-height="480"
+            width="1039"
+            height="1280"
             loading="lazy"
+            decoding="async"
           />
         </figure>
       </div>
@@ -73,8 +75,8 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
         love to hear from you.
       </p>
       <div class="contact__actions">
-        <a class="btn" href={`mailto:${email}`}>Email me</a>
-        <a class="btn btn--ghost" href={telHref}>{phone}</a>
+        <Button href={`mailto:${email}`}>Email me</Button>
+        <Button variant="ghost" href={telHref}>{phone}</Button>
       </div>
       <p class="contact__detail mono">
         <a href={`mailto:${email}`}>{email}</a>
@@ -135,34 +137,6 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
     box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
   }
 
-  /* CTA buttons */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: #04120e;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.7rem 1.25rem;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 22px -8px var(--accent);
-  }
-  .btn--ghost {
-    background: transparent;
-    color: var(--accent);
-    border-color: var(--border);
-  }
-  .btn--ghost:hover {
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
-    box-shadow: none;
-  }
-
   /* 2. Biography */
   .bio {
     display: grid;
@@ -179,6 +153,7 @@ const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
   }
   .bio__figure img {
     width: 100%;
+    height: auto;
     border-radius: 12px;
     border: 1px solid var(--border);
   }

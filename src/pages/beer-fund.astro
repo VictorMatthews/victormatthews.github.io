@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
 
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
@@ -20,7 +21,7 @@ const newTabHint = 'Opens in a new tab';
 >
   <Header active="beer-fund" />
 
-  <main>
+  <main id="main">
     <!-- Intro: heading + avatar + blurb -->
     <div class="beer__intro container">
       <p class="beer__prompt mono">$ /beer-fund</p>
@@ -42,21 +43,21 @@ const newTabHint = 'Opens in a new tab';
       <div class="beer__actions">
         {
           beerFund.buttons.map((button) => (
-            <a
-              class="beer__btn"
+            <Button
               href={button.url}
-              target="_blank"
-              rel="noopener"
+              size="lg"
+              external
+              ariaLabel={button.label}
             >
-              <span class="beer__btn-label">{button.label}</span>
+              {button.label}
               <span
-                class="beer__btn-ext"
+                class="beer__ext"
                 aria-hidden="true"
                 title={newTabHint}
               >
                 ↗
               </span>
-            </a>
+            </Button>
           ))
         }
       </div>
@@ -108,32 +109,15 @@ const newTabHint = 'Opens in a new tab';
     color: var(--fg);
   }
 
-  /* Payment buttons — mirror the site's `.btn` look (kept local so this page
-     stays self-contained). Each is a plain external link: no SDK, no JS. */
+  /* Payment buttons share the site's `.btn` look via <Button>; only the
+     "opens in a new tab" arrow keeps its own sizing here. */
   .beer__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
   }
-  .beer__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: #04120e;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.75rem 1.4rem;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .beer__btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 22px -8px var(--accent);
-  }
-  .beer__btn-ext {
+  .beer__ext {
     font-size: 1.05rem;
     line-height: 1;
   }

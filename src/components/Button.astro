@@ -1,0 +1,68 @@
+---
+interface Props {
+  href: string;
+  variant?: 'solid' | 'ghost';
+  size?: 'md' | 'lg';
+  external?: boolean;
+  download?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'solid',
+  size = 'md',
+  external = false,
+  download = false,
+  ariaLabel,
+} = Astro.props;
+---
+
+<a
+  class:list={[
+    'btn',
+    { 'btn--ghost': variant === 'ghost', 'btn--lg': size === 'lg' },
+  ]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  download={download || undefined}
+  aria-label={ariaLabel}
+>
+  <slot />
+</a>
+
+<style>
+  /* Shared call-to-action. Solid is the default; `ghost` is the secondary
+     outline. `lg` is used for the prominent download / donate CTAs. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #04120e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -8px var(--accent);
+  }
+  .btn--lg {
+    padding: 0.75rem 1.4rem;
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--accent);
+    border-color: var(--border);
+  }
+  .btn--ghost:hover {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: none;
+  }
+</style>

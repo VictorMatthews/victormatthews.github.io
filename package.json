@@ -1,6 +1,9 @@
 {
   "name": "victor-matthews",
   "type": "module",
+  "engines": {
+    "node": ">=26.13.1"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
