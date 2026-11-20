@@ -1,17 +1,14 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
 
-// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
-// hard-coded here. No client JS, no portfolio, no GitHub fetch: pure static.
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name, title, location, landing, bio, email, phone } = profile.data;
 
-// Strip formatting for a clean tel: target (display string stays formatted).
 const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 ---
 
