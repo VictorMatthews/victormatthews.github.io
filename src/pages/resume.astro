@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
 
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
@@ -19,7 +20,7 @@ const MAX_LEVEL = 5;
 >
   <Header active="resume" />
 
-  <main>
+  <main id="main">
     <!-- Résumé header -->
     <div class="resume__intro container">
       <h1 class="resume__name">{name}</h1>
@@ -109,10 +110,10 @@ const MAX_LEVEL = 5;
 
     <!-- 5. Download CTA -->
     <Section id="download" title="Download">
-      <a class="resume__cta" href={resumePdf} download>
+      <Button href={resumePdf} size="lg" download>
         Download PDF version of my resume
         <span aria-hidden="true">↓</span>
-      </a>
+      </Button>
     </Section>
   </main>
 
@@ -221,30 +222,6 @@ const MAX_LEVEL = 5;
     max-width: 64ch;
     font-size: 1.05rem;
     margin: 0;
-  }
-
-  /* Download CTA (mirrors the home page's `.btn` look, kept local so this page
-     stays self-contained). */
-  .resume__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: #04120e;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.75rem 1.4rem;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .resume__cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 22px -8px var(--accent);
-  }
-  .resume__cta span {
-    font-size: 1.05rem;
-    line-height: 1;
   }
 
   /* On narrow screens, stack the role/duration instead of spreading them out. */

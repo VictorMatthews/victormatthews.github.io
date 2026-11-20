@@ -5,6 +5,7 @@ import '@fontsource/inter/600.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/700.css';
 import '../styles/global.css';
+import { getEntry } from 'astro:content';
 
 interface Props {
   title: string;
@@ -18,7 +19,43 @@ const {
   ogImage = '/images/victor-matthews-avatar.jpg',
 } = Astro.props;
 
+// Single identity: this is a one-person site, so the layout pulls the one
+// `profile` document to keep structured data (JSON-LD `Person`, `sameAs`) in
+// sync with the copy instead of threading socials through every page. Falls
+// back to a safe default if the entry is ever missing.
+const profile = await getEntry('profile', 'main');
+const identity = profile?.data ?? {
+  name: 'Victor Matthews',
+  title: 'Software Engineer',
+  location: '',
+  email: '',
+  socials: [],
+};
+const { name, title: jobTitle, location, email, socials } = identity;
+
 const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).toString() : null;
+
+// Canonical + JSON-LD `Person`. `sameAs` uses the real social URLs so crawlers
+// can resolve this identity across platforms; the location is split into the
+// structured `PostalAddress` fields when present.
+const addressParts = location.split(',').map((part) => part.trim());
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name,
+  jobTitle,
+  url: Astro.url.toString(),
+  ...(addressParts[0] ? {
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: addressParts[0],
+      ...(addressParts[1] ? { addressRegion: addressParts[1] } : {}),
+      ...(addressParts[2] ? { addressCountry: addressParts[2] } : {}),
+    },
+  } : {}),
+  ...(email ? { email } : {}),
+  ...(socials?.length ? { sameAs: socials.map((social) => social.url) } : {}),
+};
 ---
 
 <!doctype html>
@@ -28,16 +65,33 @@ const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).toString() : null
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.png" />
+    <link rel="canonical" href={Astro.url.toString()} />
 
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0d1117" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {
       absoluteOgImage && <meta property="og:image" content={absoluteOgImage} />
     }
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {
+      absoluteOgImage && <meta name="twitter:image" content={absoluteOgImage} />
+    }
+
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <slot />
   </body>
 </html>
