@@ -63,12 +63,6 @@ const profile = defineCollection({
         duration: z.string(),
       }),
     ),
-    skills: z.array(
-      z.object({
-        name: z.string(),
-        level: z.number().min(1).max(5),
-      }),
-    ),
     resumePdf: z.string(),
     objective: z.string(),
 
