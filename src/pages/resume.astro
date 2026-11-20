@@ -8,7 +8,7 @@ import Button from '../components/Button.astro';
 
 const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
-const { name, title, location, objective, experience, education, skills, resumePdf } =
+const { name, title, location, objective, experience, education, resumePdf } =
   profile.data;
 
 const MAX_LEVEL = 5;
@@ -71,36 +71,6 @@ const MAX_LEVEL = 5;
           ))
         }
       </div>
-    </Section>
-
-    <!-- 3. Professional Skills -->
-    <Section id="skills" title="Professional Skills">
-      <ul class="skills">
-        {
-          skills.map((skill) => (
-            <li class="skills__row">
-              <span class="skills__name">{skill.name}</span>
-              <span
-                class="skills__dots"
-                role="img"
-                aria-label={`Proficiency: ${skill.level} of ${MAX_LEVEL}`}
-              >
-                {
-                  Array.from({ length: MAX_LEVEL }).map((_, i) => (
-                    <span
-                      class:list={[
-                        'skills__dot',
-                        { 'skills__dot--on': i < skill.level },
-                      ]}
-                      aria-hidden="true"
-                    />
-                  ))
-                }
-              </span>
-            </li>
-          ))
-        }
-      </ul>
     </Section>
 
     <!-- 4. Objective -->
@@ -181,40 +151,6 @@ const MAX_LEVEL = 5;
   }
   .resume__bullets li::marker {
     color: var(--accent);
-  }
-
-  /* Skills — pure-CSS dots, no JS */
-  .skills {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.85rem 2rem;
-  }
-  .skills__row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .skills__name {
-    font-size: 0.95rem;
-  }
-  .skills__dots {
-    display: inline-flex;
-    gap: 0.3rem;
-  }
-  .skills__dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: transparent;
-  }
-  .skills__dot--on {
-    background: var(--accent);
-    border-color: var(--accent);
   }
 
   /* Objective */
