@@ -74,7 +74,7 @@ export default {
       title: 'Senior Software Engineer',
       duration: 'May 2021 - Nov 2025',
       bullets: [
-        'Build and maintain high-integrity data pipelines and APIs that feed ' +
+        'Built and maintained high-integrity data pipelines and APIs that feed ' +
           'aviation products.',
         'Rebuilt a data extraction pipeline in Python + DataBricks, cutting delivery ' +
           'time over 100x compared to the previous process.',
@@ -87,11 +87,11 @@ export default {
       title: 'Software Engineer',
       duration: 'Mar 2016 - May 2021',
       bullets: [
-        'Built a warehouse management system as the subject-matter engineer for ' +
+        'Built a warehouse management system as the subject matter expert for ' +
           'Inventory and Material Handling.',
         'Led the migration off legacy telnet-based devices onto a modern Angular ' +
           'application.',
-        'Implemented the receiving, selection, inventory, and shipping modules ' +
+        'Implemented the receiving, selection, inventory control, and shipping modules ' +
           'that run the warehouse floor.',
       ],
     },
