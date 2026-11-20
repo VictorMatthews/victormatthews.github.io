@@ -7,6 +7,14 @@ const profile = await getEntry('profile', 'main');
 if (!profile) throw new Error('profile entry not found');
 const { name } = profile.data;
 
+interface Props {
+  // Key of the nav item to mark as the current page (e.g. "resume",
+  // "beer-fund"). Omitted on the home page, where no item is active.
+  active?: string;
+}
+
+const { active } = Astro.props;
+
 const base = "/"; // Astro.config.base; // '/' for this root user page
 const onHome = Astro.url.pathname === base;
 
@@ -15,11 +23,11 @@ const onHome = Astro.url.pathname === base;
 const anchor = (id: string) => (onHome ? `#${id}` : `${base}#${id}`);
 
 const navLinks = [
-  { label: 'Home', href: onHome ? '#landing' : base },
-  { label: 'Biography', href: anchor('biography') },
-  { label: 'Contact', href: anchor('contact') },
-  { label: 'Resume', href: `${base}/resume` },
-  { label: 'Beer Fund', href: `${base}/beer-fund` },
+  { key: 'home', label: 'Home', href: onHome ? '#landing' : base },
+  { key: 'biography', label: 'Biography', href: anchor('biography') },
+  { key: 'contact', label: 'Contact', href: anchor('contact') },
+  { key: 'resume', label: 'Resume', href: `${base}/resume` },
+  { key: 'beer-fund', label: 'Beer Fund', href: `${base}/beer-fund` },
 ];
 ---
 
@@ -29,7 +37,14 @@ const navLinks = [
     <nav class="header__nav" aria-label="Primary">
       {
         navLinks.map((link) => (
-          <a class="header__link" href={link.href}>
+          <a
+            class:list={[
+              'header__link',
+              { active: active === link.key },
+            ]}
+            href={link.href}
+            aria-current={active === link.key ? 'page' : undefined}
+          >
             {link.label}
           </a>
         ))
@@ -85,6 +100,12 @@ const navLinks = [
   .header__link:hover {
     color: var(--fg);
     background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  /* The current route's nav item reads active. */
+  .header__link.active {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
   }
 
   /* No JS: the nav simply wraps and stacks below the brand on small screens. */
