@@ -26,8 +26,8 @@ const navLinks = [
   { key: 'home', label: 'Home', href: onHome ? '#landing' : base },
   { key: 'biography', label: 'Biography', href: anchor('biography') },
   { key: 'contact', label: 'Contact', href: anchor('contact') },
-  { key: 'resume', label: 'Resume', href: `${base}/resume` },
-  { key: 'beer-fund', label: 'Beer Fund', href: `${base}/beer-fund` },
+  { key: 'resume', label: 'Resume', href: `${Astro.url}resume` },
+  { key: 'beer-fund', label: 'Beer Fund', href: `${Astro.url}beer-fund` },
 ];
 ---
 
