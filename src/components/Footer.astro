@@ -1,0 +1,83 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import SocialIcons from './SocialIcons.astro';
+
+// Reused by Resume (Step 5) and Beer-Fund (Step 6); reads socials + email from
+// the `profile` collection so every page stays in sync.
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('profile entry not found');
+const { socials, email, name } = profile.data;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <nav class="footer__socials" aria-label="Social links">
+      {
+        socials.map((social) => (
+          <a
+            class="footer__social"
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            title={social.label}
+          >
+            <SocialIcons icon={social.icon} />
+          </a>
+        ))
+      }
+      <a class="footer__social" href={`mailto:${email}`} aria-label="Email" title="Email">
+        <SocialIcons icon="email" />
+      </a>
+    </nav>
+    <p class="footer__copy mono">© {year} {name}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: 1.75rem;
+    margin-top: 3rem;
+  }
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .footer__social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .footer__social .social-icons {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer__copy {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>

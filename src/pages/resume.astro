@@ -1,0 +1,261 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+
+// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
+// hard-coded here. Pure static: no client JS. Skill proficiency is rendered with
+// pure-CSS dots (filled `level` of 5), so the page stays fast and static.
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('profile entry not found');
+const { name, title, location, objective, experience, education, skills, resumePdf } =
+  profile.data;
+
+// Skills are scored on a 1–5 scale (see the content schema); render `level` of
+// `MAX_LEVEL` filled dots per skill.
+const MAX_LEVEL = 5;
+---
+
+<BaseLayout
+  title={`${name} — Resume`}
+  description={`${name} — Resume: experience, education, and professional skills.`}
+>
+  <Header active="resume" />
+
+  <main>
+    <!-- Résumé header -->
+    <div class="resume__intro container">
+      <h1 class="resume__name">{name}</h1>
+      <p class="resume__role mono">{title}</p>
+      <p class="resume__loc mono">{location}</p>
+    </div>
+
+    <!-- 1. Experience -->
+    <Section id="experience" title="Experience">
+      <div class="resume__items">
+        {
+          experience.map((job) => (
+            <article class="resume__item">
+              <div class="resume__item-head">
+                <div>
+                  <h3 class="resume__title">{job.title}</h3>
+                  <p class="resume__org mono">{job.company}</p>
+                </div>
+                <p class="resume__duration mono">{job.duration}</p>
+              </div>
+              <ul class="resume__bullets">
+                {
+                  job.bullets.map((bullet) => <li>{bullet}</li>)
+                }
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+
+    <!-- 2. Education -->
+    <Section id="education" title="Education">
+      <div class="resume__items">
+        {
+          education.map((ed) => (
+            <article class="resume__item">
+              <div class="resume__item-head">
+                <div>
+                  <h3 class="resume__title">{ed.title}</h3>
+                  <p class="resume__org mono">
+                    {ed.institution} · {ed.location}
+                  </p>
+                </div>
+                <p class="resume__duration mono">{ed.duration}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+
+    <!-- 3. Professional Skills -->
+    <Section id="skills" title="Professional Skills">
+      <ul class="skills">
+        {
+          skills.map((skill) => (
+            <li class="skills__row">
+              <span class="skills__name">{skill.name}</span>
+              <span
+                class="skills__dots"
+                role="img"
+                aria-label={`Proficiency: ${skill.level} of ${MAX_LEVEL}`}
+              >
+                {
+                  Array.from({ length: MAX_LEVEL }).map((_, i) => (
+                    <span
+                      class:list={[
+                        'skills__dot',
+                        { 'skills__dot--on': i < skill.level },
+                      ]}
+                      aria-hidden="true"
+                    />
+                  ))
+                }
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </Section>
+
+    <!-- 4. Objective -->
+    <Section id="objective" title="Objective">
+      <p class="objective">{objective}</p>
+    </Section>
+
+    <!-- 5. Download CTA -->
+    <Section id="download" title="Download">
+      <a class="resume__cta" href={resumePdf} download>
+        Download PDF version of my resume
+        <span aria-hidden="true">↓</span>
+      </a>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Résumé header */
+  .resume__intro {
+    padding-block: 3.5rem 1.5rem;
+  }
+  .resume__name {
+    font-size: clamp(2.25rem, 6vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.35rem;
+  }
+  .resume__role {
+    color: var(--accent);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 0 0.2rem;
+  }
+  .resume__loc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Experience / Education items */
+  .resume__items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .resume__item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    flex-wrap: wrap;
+  }
+  .resume__title {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .resume__org {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin: 0.15rem 0 0;
+  }
+  .resume__duration {
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin: 0;
+  }
+  .resume__bullets {
+    margin: 0.75rem 0 0;
+    padding-left: 1.15rem;
+    max-width: 64ch;
+  }
+  .resume__bullets li {
+    margin-bottom: 0.4rem;
+  }
+  .resume__bullets li::marker {
+    color: var(--accent);
+  }
+
+  /* Skills — pure-CSS dots, no JS */
+  .skills {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.85rem 2rem;
+  }
+  .skills__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .skills__name {
+    font-size: 0.95rem;
+  }
+  .skills__dots {
+    display: inline-flex;
+    gap: 0.3rem;
+  }
+  .skills__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+  }
+  .skills__dot--on {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* Objective */
+  .objective {
+    max-width: 64ch;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  /* Download CTA (mirrors the home page's `.btn` look, kept local so this page
+     stays self-contained). */
+  .resume__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #04120e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .resume__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -8px var(--accent);
+  }
+  .resume__cta span {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  /* On narrow screens, stack the role/duration instead of spreading them out. */
+  @media (max-width: 600px) {
+    .resume__item-head {
+      flex-direction: column;
+    }
+  }
+</style>

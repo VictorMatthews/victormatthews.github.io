@@ -1,0 +1,230 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+
+// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
+// hard-coded here. No client JS, no portfolio, no GitHub fetch: pure static.
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('profile entry not found');
+const { name, title, location, landing, bio, email, phone } = profile.data;
+
+// Strip formatting for a clean tel: target (display string stays formatted).
+const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
+---
+
+<BaseLayout
+  title={`${name} — ${title}`}
+  description={landing}
+  ogImage="/images/victor-matthews-avatar.jpg"
+>
+  <Header />
+
+  <main>
+    <!-- 1. Landing / hero -->
+    <section id="landing" class="hero container">
+      <div class="hero__text">
+        <p class="hero__prompt mono">$ whoami</p>
+        <h1 class="hero__name">{name}</h1>
+        <p class="hero__title">{title}</p>
+        <p class="hero__loc mono">{location}</p>
+        <p class="hero__landing">{landing}</p>
+        <a class="btn" href="#contact">
+          Work with me <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="hero__media">
+        <img
+          src="/images/victor-matthews-avatar.jpg"
+          alt="Portrait of Victor Matthews"
+          width="360"
+          height="360"
+          loading="eager"
+        />
+      </div>
+    </section>
+
+    <!-- 2. Biography -->
+    <Section id="biography" title="Biography">
+      <div class="bio">
+        <div class="bio__text">
+          {
+            bio.map((paragraph) => <p>{paragraph}</p>)
+          }
+        </div>
+        <figure class="bio__figure">
+          <img
+            src="/images/home/biography.jpg"
+            alt="Victor at work"
+            min-width="640"
+            min-height="480"
+            max-width="640"
+            max-height="480"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </Section>
+
+    <!-- 3. Contact -->
+    <Section id="contact" title="Work with me?">
+      <p class="contact__intro">
+        I'm always up for interesting problems, ambitious teams, and a good
+        conversation over a fresh brew. If any of this resonates, reach out — I'd
+        love to hear from you.
+      </p>
+      <div class="contact__actions">
+        <a class="btn" href={`mailto:${email}`}>Email me</a>
+        <a class="btn btn--ghost" href={telHref}>{phone}</a>
+      </div>
+      <p class="contact__detail mono">
+        <a href={`mailto:${email}`}>{email}</a>
+        <span class="contact__sep">·</span>
+        <a href={telHref}>{phone}</a>
+      </p>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* 1. Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding-block: 4.5rem 3rem;
+  }
+  .hero__prompt {
+    color: var(--muted);
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin: 0 0 0.5rem;
+  }
+  .hero__name {
+    font-size: clamp(2.25rem, 6vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.6rem;
+  }
+  .hero__title {
+    color: var(--accent);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 0 0.15rem;
+  }
+  .hero__loc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 1.4rem;
+  }
+  .hero__landing {
+    max-width: 54ch;
+    font-size: 1.05rem;
+    margin: 0 0 1.75rem;
+  }
+  .hero__media img {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    margin-inline: auto;
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  /* CTA buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #04120e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -8px var(--accent);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--accent);
+    border-color: var(--border);
+  }
+  .btn--ghost:hover {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: none;
+  }
+
+  /* 2. Biography */
+  .bio {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .bio__text p {
+    max-width: 62ch;
+    margin: 0 0 1rem;
+  }
+  .bio__figure {
+    margin: 0;
+  }
+  .bio__figure img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  /* 3. Contact */
+  .contact__intro {
+    max-width: 60ch;
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+  }
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .contact__detail {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .contact__detail a {
+    color: var(--fg);
+  }
+  .contact__detail a:hover {
+    color: var(--accent);
+  }
+  .contact__sep {
+    margin-inline: 0.6rem;
+    color: var(--border);
+  }
+
+  /* Mobile: stack everything, avatar on top of the hero */
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding-block: 3rem 2rem;
+    }
+    .hero__media {
+      order: -1;
+    }
+    .bio {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

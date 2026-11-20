@@ -1,0 +1,28 @@
+---
+// A consistent anchor section wrapper: `<section id><h2?><slot/></section>`.
+// Used by Home for #biography and #contact; reusable on later pages.
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<section id={id} class="section container">
+  {
+    title && <h2 class="section__title mono">{title}</h2>
+  }
+  <slot />
+</section>
+
+<style>
+  .section {
+    padding-block: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .section__title {
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    margin: 0 0 1.25rem;
+  }
+</style>
