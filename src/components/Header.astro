@@ -1,0 +1,121 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+
+// The Header is reused on the Resume (Step 5) and Beer-Fund (Step 6) pages, so
+// it pulls its brand from the `profile` collection instead of hard-coding copy.
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('profile entry not found');
+const { name } = profile.data;
+
+interface Props {
+  // Key of the nav item to mark as the current page (e.g. "resume",
+  // "beer-fund"). Omitted on the home page, where no item is active.
+  active?: string;
+}
+
+const { active } = Astro.props;
+
+const base = "/"; // Astro.config.base; // '/' for this root user page
+
+const navLinks = [
+  { key: 'home', label: 'Home', href: `${Astro.url.origin}` },
+  { key: 'biography', label: 'Biography', href: `${Astro.url.origin}/#biography` },
+  { key: 'contact', label: 'Contact', href: `${Astro.url.origin}/#contact` },
+  // { key: 'resume', label: 'Resume', href: `${Astro.url.origin}/resume` },
+  // { key: 'beer-fund', label: 'Beer Fund', href: `${Astro.url.origin}/beer-fund` },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand mono" href={base}>{name}</a>
+    <nav class="header__nav" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            class:list={[
+              'header__link',
+              { active: active === link.key },
+            ]}
+            href={link.href}
+            aria-current={active === link.key ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-elev);
+    background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    padding-block: 0.85rem;
+  }
+
+  .header__brand {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+  .header__brand:hover {
+    color: var(--accent);
+  }
+
+  .header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .header__link {
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 0.4rem 0.65rem;
+    border-radius: 6px;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .header__link:hover {
+    color: var(--fg);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  /* The current route's nav item reads active. */
+  .header__link.active {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+
+  /* No JS: the nav simply wraps and stacks below the brand on small screens. */
+  @media (max-width: 600px) {
+    .header__inner {
+      justify-content: flex-start;
+    }
+    .header__nav {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 0.1rem;
+    }
+    .header__link {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.5rem;
+    }
+  }
+</style>
