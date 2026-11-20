@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://victormmatthews.me',
-  base: '/', // root user page — NO subpath
+  site: 'https://victormatthews.github.io',
   output: 'static',
   integrations: [sitemap()],
 });
