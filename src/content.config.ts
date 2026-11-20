@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import profileData from './profile/index.js';
+import profileData from './content/profile/index.js';
 
 /**
  * `profile` is the single source of truth for all site copy and structured
@@ -27,7 +27,10 @@ import profileData from './profile/index.js';
  * can reuse the same values instead of duplicating them.
  */
 const profile = defineCollection({
-  loader: async () => ({ index: profileData }),
+  loader: async () => {
+    console.log('[profile loader] keys:', Object.keys(profileData || {}), 'typeof:', typeof profileData);
+    return { index: profileData };
+  },
   schema: z.object({
     name: z.string(),
     title: z.string(),

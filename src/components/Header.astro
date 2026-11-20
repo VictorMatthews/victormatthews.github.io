@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+
+// The Header is reused on the Resume (Step 5) and Beer-Fund (Step 6) pages, so
+// it pulls its brand from the `profile` collection instead of hard-coding copy.
+const profile = getCollection('profile')[0];
+if (!profile) throw new Error('profile entry not found');
+const { name } = profile.data;
+
+const base = Astro.config.base; // '/' for this root user page
+const onHome = Astro.url.pathname === base;
+
+// In-page anchors resolve to sections on the current (home) page; from other
+// routes the same links jump to the matching section on the home page.
+const anchor = (id: string) => (onHome ? `#${id}` : `${base}#${id}`);
+
+const navLinks = [
+  { label: 'Home', href: onHome ? '#landing' : base },
+  { label: 'Biography', href: anchor('biography') },
+  { label: 'Contact', href: anchor('contact') },
+  { label: 'Resume', href: `${base}/resume` },
+  { label: 'Beer Fund', href: `${base}/beer-fund` },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand mono" href={base}>{name}</a>
+    <nav class="header__nav" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a class="header__link" href={link.href}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-elev);
+    background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    padding-block: 0.85rem;
+  }
+
+  .header__brand {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+  }
+  .header__brand:hover {
+    color: var(--accent);
+  }
+
+  .header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .header__link {
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 0.4rem 0.65rem;
+    border-radius: 6px;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .header__link:hover {
+    color: var(--fg);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  /* No JS: the nav simply wraps and stacks below the brand on small screens. */
+  @media (max-width: 600px) {
+    .header__inner {
+      justify-content: flex-start;
+    }
+    .header__nav {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 0.1rem;
+    }
+    .header__link {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.5rem;
+    }
+  }
+</style>
