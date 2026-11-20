@@ -19,6 +19,7 @@ import profileData from './content/profile/index.js';
  *   - Home (Step 4): `bio`, `landing`, `socials`, and the contact fields
  *     (`name`, `title`, `location`, `email`, `phone`).
  *   - Resume (Step 5): `experience`, `education`, `skills`, `resumePdf`, `objective`.
+ *   - Beer Fund (Step 6): `beerFund` (`blurb`, `avatar`, `buttons`).
  *
  * `socials[].icon` is a semantic identifier (e.g. `"github"`, `"linkedin"`).
  * The UI layer maps it to whatever icon set the site uses — keep it free of any
@@ -70,6 +71,23 @@ const profile = defineCollection({
     ),
     resumePdf: z.string(),
     objective: z.string(),
+
+    // Beer Fund page (Step 6): a small "tip jar" — a blurb, an avatar, and
+    // three external payment buttons. URLs are the exact, already-captured
+    // handles; the page renders each as a plain external link
+    // (`target="_blank" rel="noopener"`), no SDK / no JS.
+    beerFund: z
+      .object({
+        blurb: z.string(),
+        avatar: z.string(),
+        buttons: z.array(
+          z.object({
+            label: z.string(),
+            url: z.string(),
+          }),
+        ),
+      })
+      .optional(),
   }),
 });
 

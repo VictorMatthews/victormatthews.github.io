@@ -16,18 +16,13 @@ interface Props {
 const { active } = Astro.props;
 
 const base = "/"; // Astro.config.base; // '/' for this root user page
-const onHome = Astro.url.pathname === base;
-
-// In-page anchors resolve to sections on the current (home) page; from other
-// routes the same links jump to the matching section on the home page.
-const anchor = (id: string) => (onHome ? `#${id}` : `${base}#${id}`);
 
 const navLinks = [
-  { key: 'home', label: 'Home', href: onHome ? '#landing' : base },
-  { key: 'biography', label: 'Biography', href: anchor('biography') },
-  { key: 'contact', label: 'Contact', href: anchor('contact') },
-  { key: 'resume', label: 'Resume', href: `${Astro.url}resume` },
-  { key: 'beer-fund', label: 'Beer Fund', href: `${Astro.url}beer-fund` },
+  { key: 'home', label: 'Home', href: `${Astro.url.origin}` },
+  { key: 'biography', label: 'Biography', href: `${Astro.url.origin}/#biography` },
+  { key: 'contact', label: 'Contact', href: `${Astro.url.origin}/#contact` },
+  { key: 'resume', label: 'Resume', href: `${Astro.url.origin}/resume` },
+  { key: 'beer-fund', label: 'Beer Fund', href: `${Astro.url.origin}/beer-fund` },
 ];
 ---
 

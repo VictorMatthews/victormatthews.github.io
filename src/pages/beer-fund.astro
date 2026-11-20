@@ -1,0 +1,150 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+
+// Every piece of copy comes from the `profile` collection (Step 3) — nothing is
+// hard-coded here. Pure static: the three buttons are plain <a> links that open
+// in a new tab — no payment SDK, no client JS.
+const profile = await getEntry('profile', 'main');
+if (!profile) throw new Error('profile entry not found');
+const { name, beerFund } = profile.data;
+if (!beerFund) throw new Error('beerFund not found');
+
+// A short, human "opens in a new tab" hint for the external-link glyph.
+const newTabHint = 'Opens in a new tab';
+---
+
+<BaseLayout
+  title={`${name} — Beer Fund`}
+  description={beerFund.blurb}
+  ogImage={beerFund.avatar}
+>
+  <Header active="beer-fund" />
+
+  <main>
+    <!-- Intro: heading + avatar + blurb -->
+    <div class="beer__intro container">
+      <p class="beer__prompt mono">$ /beer-fund</p>
+      <h1 class="beer__title">Beer Fund</h1>
+      <div class="beer__media">
+        <img
+          src={beerFund.avatar}
+          alt="Beer fund avatar"
+          width="240"
+          height="240"
+          loading="eager"
+        />
+      </div>
+      <p class="beer__blurb">{beerFund.blurb}</p>
+    </div>
+
+    <!-- 3. Payment buttons -->
+    <Section id="donate" title="Buy me a beer">
+      <div class="beer__actions">
+        {
+          beerFund.buttons.map((button) => (
+            <a
+              class="beer__btn"
+              href={button.url}
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="beer__btn-label">{button.label}</span>
+              <span
+                class="beer__btn-ext"
+                aria-hidden="true"
+                title={newTabHint}
+              >
+                ↗
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="beer__note mono">
+        Thanks for the tips — every dollar keeps the brew going.
+      </p>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Intro: heading, avatar, blurb — centered, terminal-themed */
+  .beer__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding-block: 4.5rem 2rem;
+  }
+  .beer__prompt {
+    color: var(--muted);
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin: 0 0 0.25rem;
+  }
+  .beer__title {
+    font-size: clamp(2.25rem, 6vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .beer__media img {
+    width: 180px;
+    height: 180px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+    margin: 0.5rem 0 1.5rem;
+  }
+  .beer__blurb {
+    max-width: 60ch;
+    font-size: 1.05rem;
+    margin: 0;
+    color: var(--fg);
+  }
+
+  /* Payment buttons — mirror the site's `.btn` look (kept local so this page
+     stays self-contained). Each is a plain external link: no SDK, no JS. */
+  .beer__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .beer__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #04120e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .beer__btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -8px var(--accent);
+  }
+  .beer__btn-ext {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+  .beer__note {
+    margin: 1.75rem 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

@@ -165,4 +165,31 @@ export default {
     'tooling. I like building the pipelines and systems that let other people ' +
     'do their jobs faster and more reliably — and the small, delightful ' +
     'products I make for myself along the way.',
+
+  // ---- Beer Fund (Step 6) — a static "tip jar", zero JS ----
+  // AUTHORED FOR REVIEW — short blurb in the site's established voice.
+  // URLs are the exact, captured handles; the `$` in the Cash App link is
+  // URL-encoded as %24 so the href stays a clean, valid URL.
+  beerFund: {
+    blurb:
+      "I'm a hobbyist home brewer, and this is where the supplies come from. " +
+      'Drop in a few dollars whenever a fresh batch hits the tap and it goes ' +
+      'straight to the next one — grain, hops, and the occasional yeast. ' +
+      'Thanks for the tips!',
+    avatar: '/images/beer-fund-avatar.jpg',
+    buttons: [
+      {
+        label: 'PayPal',
+        url: 'https://www.paypal.com/paypalme/VictorMatthewsX?locale.x=en_US',
+      },
+      {
+        label: 'Venmo',
+        url: 'https://www.venmo.com/VictorMatthewsX',
+      },
+      {
+        label: 'Cash App',
+        url: 'https://cash.app/%24VictorMatthewsX',
+      },
+    ],
+  },
 } as const;
